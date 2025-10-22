@@ -1,0 +1,17 @@
+#!/bin/bash
+profile=$(cat terraform.tfvars | grep ^profile | awk -F\" '{ print $2 }')
+if [ -z $profile ]; then
+  echo "Profile invalid or not specified, please check terraform.tfvars file."
+  exit 1
+fi
+echo "AWS profile: ${profile}."
+#echo "Running: tofu apply -auto-approve -destroy -state=terraform.${profile}.tfstate"
+
+#echo "Running: tofu apply -auto-approve -destroy"
+#sleep 1
+#tofu apply -auto-approve -destroy
+
+# more careful
+echo "Running: tofu apply -destroy"
+sleep 1
+tofu apply -destroy
