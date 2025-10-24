@@ -27,6 +27,8 @@ resource "aws_iam_policy" "permission_policy_s3_cross_account" {
   })
 }
 
+#before provisioning below resources, please check the role ${var.s3_remote_role_name} exists on remote account
+
 #trust policy (role)
 resource "aws_iam_role" "role_s3_cross_account" {
   count    = var.s3_cross_account_enabled ? 1 : 0
@@ -36,13 +38,13 @@ resource "aws_iam_role" "role_s3_cross_account" {
   # Allow EC2s to assume this role
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
-    Statement: [
+    Statement = [
       {
-        Effect: "Allow",
-        Principal: {
-          "AWS": "arn:aws:iam::${var.s3_remote_account_id}:role/${var.s3_remote_role_name}"
+        Effect = "Allow",
+        Principal = {
+          AWS = "arn:aws:iam::${var.s3_remote_account_id}:role/${var.s3_remote_role_name}"
         },
-        Action: "sts:AssumeRole"
+        Action = "sts:AssumeRole"
       }
     ]
   })
