@@ -71,11 +71,7 @@ resource "aws_iam_role" "role_s3_test_cross_account" {
       {
         Effect = "Allow",
         Principal = {
-          AWS = [
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/${var.s3_test_remote_role_name}",
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/role-emeahub-xf-prod-automation",
-            "arn:aws:iam::899011411636:user/user-emeahub-xf-prod-automation-aid5hy7k"
-          ]
+          AWS = "arn:aws:iam::${var.s3_test_remote_account_id}:role/${var.s3_test_remote_role_name}"
         },
         Action = "sts:AssumeRole"
       }
@@ -100,11 +96,7 @@ resource "aws_s3_bucket_policy" "bucket_policy_s3_test_cross_account" {
       {
         Effect = "Allow",
         Principal = {
-          AWS = [
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/${var.s3_test_remote_role_name}",
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/role-emeahub-xf-prod-automation",
-            "arn:aws:iam::899011411636:user/user-emeahub-xf-prod-automation-aid5hy7k"
-          ]
+          AWS = "arn:aws:iam::${var.s3_test_remote_account_id}:role/${var.s3_test_remote_role_name}"
         },
         Action = [
           "s3:ListBucket",
@@ -122,11 +114,7 @@ resource "aws_s3_bucket_policy" "bucket_policy_s3_test_cross_account" {
       {
         Effect = "Allow",
         Principal = {
-          AWS = [
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/${var.s3_test_remote_role_name}",
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/role-emeahub-xf-prod-automation",
-            "arn:aws:iam::899011411636:user/user-emeahub-xf-prod-automation-aid5hy7k"
-          ]
+          AWS = "arn:aws:iam::${var.s3_test_remote_account_id}:role/${var.s3_test_remote_role_name}"
         },
         Action = [
           "s3:GetObject",
@@ -235,11 +223,7 @@ resource "aws_iam_role" "role_s3_cross_account" {
       {
         Effect = "Allow",
         Principal = {
-          AWS = [
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/${var.s3_remote_role_name}",
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/role-emeahub-xf-prod-automation",
-            "arn:aws:iam::899011411636:user/user-emeahub-xf-prod-automation-aid5hy7k"
-          ]
+          AWS = "arn:aws:iam::${var.s3_remote_account_id}:role/${var.s3_remote_role_name}"
         },
         Action = "sts:AssumeRole"
       }
@@ -264,11 +248,7 @@ resource "aws_s3_bucket_policy" "bucket_policy_s3_cross_account" {
       {
         Effect = "Allow",
         Principal = {
-          AWS = [
-            "arn:aws:iam::${var.s3_remote_account_id}:role/${var.s3_remote_role_name}",
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/role-emeahub-xf-prod-automation",
-            "arn:aws:iam::899011411636:user/user-emeahub-xf-prod-automation-aid5hy7k"
-          ]
+          AWS = "arn:aws:iam::${var.s3_remote_account_id}:role/${var.s3_remote_role_name}"
         },
         Action = [
           "s3:ListBucket",
@@ -286,11 +266,7 @@ resource "aws_s3_bucket_policy" "bucket_policy_s3_cross_account" {
       {
         Effect = "Allow",
         Principal = {
-          AWS = [
-            "arn:aws:iam::${var.s3_remote_account_id}:role/${var.s3_remote_role_name}",
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/role-emeahub-xf-prod-automation",
-            "arn:aws:iam::899011411636:user/user-emeahub-xf-prod-automation-aid5hy7k"
-          ]
+          AWS = "arn:aws:iam::${var.s3_remote_account_id}:role/${var.s3_remote_role_name}"
         },
         Action = [
           "s3:GetObject",
