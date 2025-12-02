@@ -46,6 +46,14 @@ variable "s3_local_folder" {
   type = string
   default = null
 }
+variable "s3_mockup_prod_local_bucket" {
+  type = string
+  default = null
+}
+variable "s3_mockup_prod_local_folder" {
+  type = string
+  default = null
+}
 variable "s3_remote_account_id" {
   type = string
   default = null

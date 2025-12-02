@@ -23,6 +23,8 @@ s3_cross_account_enabled      = true
 s3_remote_account_id          = "905418403597"
 s3_local_bucket               = "test-s3-gdrps3-etl-np-bsn0029686-dev-eu-west-1"
 s3_local_folder               = "webdac"
+s3_mockup_prod_local_bucket   = "s3-gdrps3-etl-np-bsn0029686-mockup-prod-eu-west-1"
+s3_mockup_prod_local_folder   = "webdac"
 s3_remote_role_name           = "role-emeahub-primeur"
 s3_remote_gateway_endpoint_id = "vpce-03c3497e6ad87918e"
 #see also file "locals.tf"

@@ -41,7 +41,7 @@ resource "aws_s3_object" "bucket-test-2-first-folder" {
 }
 ######### /test using aizoon account
 
-#########gdrp bucket simulation
+#########gdrp bucket simulation 1
 resource "aws_s3_bucket" "bucket-test" {
   bucket = "${var.s3_local_bucket}"
 }
@@ -81,4 +81,46 @@ resource "aws_s3_object" "bucket-test-first-folder" {
   key    = "${var.s3_local_folder}/"
   acl    = "private"
 }
-#########/gdrp bucket simulation
+#########/gdrp bucket simulation 1
+
+#########gdrp bucket simulation 2 (mockup-prod)
+resource "aws_s3_bucket" "bucket-mockup-prod" {
+  bucket = "${var.s3_mockup_prod_local_bucket}"
+}
+
+### Default settings for S3 bucket
+# ACL disabled (object ownership enforced)
+resource "aws_s3_bucket_ownership_controls" "bucket-mockup-prod-ownership-controls" {
+  bucket = aws_s3_bucket.bucket-mockup-prod.id
+
+  rule {
+    object_ownership = "BucketOwnerEnforced"
+  }
+}
+# No public access
+resource "aws_s3_bucket_public_access_block" "bucket-mockup-prod-public-access-block" {
+  bucket = aws_s3_bucket.bucket-mockup-prod.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+# Auto crypt
+resource "aws_s3_bucket_server_side_encryption_configuration" "bucket-mockup-prod-server-side-encryption" {
+  bucket = aws_s3_bucket.bucket-mockup-prod.id
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256" # = SSE-S3 (default console)
+    }
+    bucket_key_enabled = true
+  }
+}
+###/Default settings for S3 bucket
+
+resource "aws_s3_object" "bucket-mockup-prod-first-folder" {
+  bucket = aws_s3_bucket.bucket-mockup-prod.id
+  key    = "${var.s3_local_folder}/"
+  acl    = "private"
+}
+#########/gdrp bucket simulation 2 (mockup-prod)
