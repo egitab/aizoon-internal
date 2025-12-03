@@ -323,7 +323,7 @@ resource "aws_iam_role" "role_s3_mockup_prod_cross_account" {
         Principal = {
           AWS = [
             #same remote roles as 'trust policy 1' are permitted to assume this role
-            "arn:aws:iam::${var.s3_test_remote_account_id}:role/${var.s3_remote_role_name}",
+            "arn:aws:iam::${var.s3_test_remote_account_id}:role/${var.s3_test_remote_role_name}",
             "arn:aws:iam::${var.s3_test_remote_account_id}:role/role-emeahub-xf-prod-automation",
             "arn:aws:iam::899011411636:user/user-emeahub-xf-prod-automation-aid5hy7k"
           ]

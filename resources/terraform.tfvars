@@ -12,8 +12,6 @@ s3_test_remote_account_id                  = "905418403597"
 s3_test_local_bucket                       = "bucket-20251030-ncv134fkfvrtvrwn"
 s3_test_local_folder                       = "folder-20251030"
 s3_test_remote_role_name                   = "role-emeahub-primeur-test"
-#s3_test_remote_role_name_for_xf_automation = "role-emeahub-xf-prod-automation" #given by default from stla provisioning
-##s3_test_remote_user_arn_for_xf_automation  = "arn:aws:iam::899011411636:user/user-emeahub-xf-prod-automation-aid5hy7k"
 s3_test_remote_gateway_endpoint_id         = "vpce-03c3497e6ad87918e"
 #see also file "locals.tf"
 # /test using aizoon account
